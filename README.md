@@ -8,7 +8,7 @@ The addition of the repo is that you can try out the code in real life using a P
 
 To start the demo run, get the necessary libraries (aria, ariacuda,rosaria, slicktoolbox), create a catkin workspace, clone this repo in its source, then run the catkin_make (+ source devel/setup.bash), then:
 
-roslaunch obstacle_avoidance pioneer_start.launch
+roslaunch wander_lab pioneer_start.launch
 
 This command starts the connection between the robot, the lidar and the host machine. (you might want to wait about 30 seconds for the lidar to connect)
 Then to check if you can control the robot, run
