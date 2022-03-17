@@ -139,6 +139,7 @@ add_executable (wander src/wander.cpp)
 
 add_executable (p3_forwardmove src/p3_forwardmove.cpp)
 add_executable (p3_wander src/p3_wander.cpp)
+add_executable (p3_wander_pico src/p3_wander_pico.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -150,6 +151,7 @@ target_link_libraries (wander ${catkin_LIBRARIES})
 
 target_link_libraries (p3_forwardmove ${catkin_LIBRARIES})
 target_link_libraries (p3_wander ${catkin_LIBRARIES})
+target_link_libraries (p3_wander_pico ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
