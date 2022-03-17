@@ -1,7 +1,7 @@
 <launch>
     <arg name="camera_name" default="pico_zense"/>
     <arg name="device_index" default="0"/>
-    <arg name="depth_confidence_threshold" default="60"/>
+    <arg name="depth_confidence_threshold" default="30"/>
     <arg name="depth_range" default="5.0"/>
     <arg name="rgb_width" default="640"/>
     <arg name="rgb_height" default="360"/>

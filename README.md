@@ -49,7 +49,8 @@ check USB connection, there should be 0 and 1 if both the lidar and the robot is
 add permissions
 
  - sudo chmod 777 /dev/ttyUSB*
-__
+
+_____________
 (catkin_make && source devel/setup.bash)
 
 connecting to robot:
