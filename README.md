@@ -29,6 +29,9 @@ To run with Pico Zense Camera instead of the lidar. use the following commands:
  - roslaunch wander_lab pioneer_start_pico.launch
 
  - rosrun wander_lab p3_wander_pico
+
+ (if you don't have the package for the pico zense, then clone it from: https://github.com/molnarszilard/pico_zense_camera)
+ (if you are running it on jetson, inside the pico_zense_camera/src/pico_zense_camera/lib/ overwrite the files with the files from the zip there)
 _______
 Additional information:
 
