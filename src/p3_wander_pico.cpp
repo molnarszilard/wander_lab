@@ -2,7 +2,7 @@
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/LaserScan.h>
 
-#define MINDISTANCE 0.8
+#define MINDISTANCE 1.0
 #define SPEED 0.2
 
 using namespace ros;
