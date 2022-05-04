@@ -21,8 +21,7 @@ class Robot2(SingletonConfigurable):
         self.BWD = 1
         self.myMotor = qwiic_scmd.QwiicScmd()
         if self.myMotor.connected == False:
-            print("Motor Driver not connected. Check connections.", \
-                file=sys.stderr)
+            print("Motor Driver not connected. Check connections.")
             return
         self.myMotor.begin()
         print("Motor initialized.")
@@ -134,15 +133,16 @@ def bck(a):
 
 def callback(msg):
     stuck = False
-    for i in range(msg.ranges.size()):
-        if i>msg.ranges.size()*0.4 and i<msg.ranges.size()*0.6:
+    for i in range(len(msg.ranges)):
+        if i>len(msg.ranges)*0.4 and i<len(msg.ranges)*0.6:
             if msg.ranges[i]<mindistance:
                 stuck = True
     if stuck:
+        print(len(msg.ranges))
         right(0.5)
     else:
         fwd(0.5)
-    print len(msg.ranges)
+    
 
 rospy.init_node('scan_values')
 sub = rospy.Subscriber('/pico_scan', LaserScan, callback)
