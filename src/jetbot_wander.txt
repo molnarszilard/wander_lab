@@ -8,32 +8,30 @@ For the main part of the lab, you need to use the simulator as it is described i
 
 The addition of the repo is that you can try out the code in real life using a Jetbot with a Jetson Nano.
 
+Starting the camera (from the catkin ws of the pico zense camera, T1, T2 source devel/setup.bash, T3 no source)
 
-Then to check if you can control the robot, run
+T1: roslaunch pico_zense_camera pz_camera.launch
+T2: roslaunch pico_zense_camera camera_node_depth_image_proc.launch
 
- - rosrun teleop_twist_keyboard teleop_twist_keyboard.py /cmd_vel:=/RosAria/cmd_vel
+T3: cd src/pico_zense_camera/launch && roslaunch pico_zense_camera depth_laser_scan.launch
 
-and move around.
-
-Go to catkin_ws, catkin_make, source devel/setup.bash
- - roslaunch wander_lab pioneer_start_pico.launch
-
- - rosrun wander_lab p3_wander_pico
+T4: cd wander_lab/src/ && python wander_jetson.py
 
  (if you don't have the package for the pico zense, then clone it from: https://github.com/molnarszilard/pico_zense_camera)
  (if you are running it on jetson, inside the pico_zense_camera/src/pico_zense_camera/lib/ overwrite the files with the files from the zip there)
  (the depthimage_to_laserscan wont work from git on jetson, install it by apt. Then WITHOUT source devel/setup.bash, roslaunch depth_laser_scan.launch from the launch folder)
+ (the pico zense camera is very instable on jetson. so far the only way to use it was to plug in both the camera and the jetson into wall)
 _______
 Additional information:
 
 _______
 Installation
-(make sure that python and ros are installed)
+(make sure that python2 and ros are installed)
 
 
 sudo apt update
-pip3 install sparkfun-qwiic-scmd
-pip3 install traitlets
+pip install sparkfun-qwiic-scmd
+pip install traitlets
 
 mkdir catkin_ws/src
 cd catkin_ws/src/
