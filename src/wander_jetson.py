@@ -6,9 +6,10 @@ import time
 import traitlets
 from traitlets.config.configurable import SingletonConfigurable
 import qwiic_scmd
-
+import numpy
 import rospy
 from sensor_msgs.msg import LaserScan
+import atexit
 
 mindistance = 0.5
 
@@ -83,7 +84,7 @@ class Robot2(SingletonConfigurable):
         speed=0
         self.myMotor.set_drive(self.R_MTR,self.BWD,speed)
         self.myMotor.set_drive(self.L_MTR,self.FWD,speed)
-        
+
     def test(self):
 #         while True:
         speed = 20
@@ -97,7 +98,7 @@ class Robot2(SingletonConfigurable):
             self.myMotor.set_drive(self.R_MTR,self.FWD,speed)
             self.myMotor.set_drive(self.L_MTR,self.FWD,speed)
             time.sleep(.05)
-            
+
     def disable(self):
         self.stop()
         print("Ending example.")
@@ -133,17 +134,29 @@ def bck(a):
 
 def callback(msg):
     stuck = False
+    #only_nan = True
+    only_nan = False
     for i in range(len(msg.ranges)):
         if i>len(msg.ranges)*0.4 and i<len(msg.ranges)*0.6:
             if msg.ranges[i]<mindistance:
                 stuck = True
+        #if not numpy.isnan(msg.ranges[i]):
+        #       print("only nan can found, i am stopping")
+        #       only_nan = False
     if stuck:
-        print(len(msg.ranges))
+        print("Obstacle ahead. I am turning right")
         right(0.5)
     else:
-        fwd(0.5)
+        fwd(0.35)
+    if len(msg.ranges)<1 or only_nan:
+        stop(0)
     
+def my_exit_function(some_argument):
+    stop(0)
+    print(some_argument)
 
+atexit.register(my_exit_function, 'Program closed. I am stopping.', )
 rospy.init_node('scan_values')
 sub = rospy.Subscriber('/pico_scan', LaserScan, callback)
 rospy.spin()
+
