@@ -32,6 +32,7 @@ To run with Pico Zense Camera instead of the lidar. use the following commands:
 
  (if you don't have the package for the pico zense, then clone it from: https://github.com/molnarszilard/pico_zense_camera)
  (if you are running it on jetson, inside the pico_zense_camera/src/pico_zense_camera/lib/ overwrite the files with the files from the zip there)
+ (The program should work with the ADI Smart Cameras as well, although, not implemented explicitely, needs some adjusments here and there.)
 _______
 Additional information:
 
