@@ -55,7 +55,7 @@ int main(int argc, char **argv)
     Subscriber sub = node.subscribe("/base_scan", 1000, laserCallback);
 
     // A publisher for the movement data
-    Publisher pub = node.advertise<geometry_msgs::Twist>("/RosAria/cmd_vel", 10);
+    Publisher pub = node.advertise<geometry_msgs::Twist>("/cmd_vel", 10);
 
     // Drive forward at a given speed.  The robot points up the x-axis.
 
