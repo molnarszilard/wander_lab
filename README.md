@@ -4,11 +4,20 @@ This repository is a supplimentary material for this lab: https://sites.google.c
 Here you can find the scripts for the solution of this lab.
 For the main part of the lab, you need to use the simulator as it is described in the documentation.
 
-The addition of the repo is that you can try out the code in real life using a Pioneer 3-AT robot with a LiDAR LMS200 on top of it.
+__________
+
+# Simulator
+
+Follow the tutorial at the EFAC website, until you can control the robot using your keyboard.
+Clone this repo into catkin_ws/src/. ```git clone https://github.com/molnarszilard/wander_lab.git```
+Run ```catkin_make```(in catkin_ws)
+Run ```rosrun wander_lab wander```
 
 __________
 
-##Jetson NX
+The addition of the repo is that you can try out the code in real life using a Pioneer 3-AT robot with a LiDAR LMS200 on top of it.
+
+# Jetson NX
 
 To start the demo run, get the necessary libraries (aria, ariacuda,rosaria, slicktoolbox), create a catkin workspace, clone this repo in its source, then run the catkin_make (+ source devel/setup.bash), then:
 
@@ -40,7 +49,7 @@ To run with Pico Zense Camera instead of the lidar. use the following commands:
 
 ___________
 
-##Jetson Nano
+# Jetson Nano
 
 -get the pico_zense_camera repo from https://github.com/molnarszilard/pico_zense_camera
 
