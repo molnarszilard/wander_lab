@@ -56,7 +56,7 @@ another terminal:
 
 ```python wander_lab/src/wander_jetson.py```
 
-Notes: Camera is very unstable with Jetson Nano. Try different cables. THe camera should be powered externally (wall plug or another power bank). In my experience, It's better to run the Jetson Nano in 5W mode, but you can try with MAXW mode as well (if you have time for that sort of thing).
+Notes: Camera is very unstable with Jetson Nano. Try different cables. THe camera should be powered externally (wall plug or another power bank). In my experience, It's better to run the Jetson Nano in 5W mode, but you can try with MAXW mode as well (if you have time for that sort of thing). The powerbank of the motor (sometimes of the camera) goes to sleep after a while (1-2 minutes), push the button on the powerbank to recover.
 
 _______
 Additional information:
