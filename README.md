@@ -6,6 +6,9 @@ For the main part of the lab, you need to use the simulator as it is described i
 
 The addition of the repo is that you can try out the code in real life using a Pioneer 3-AT robot with a LiDAR LMS200 on top of it.
 
+__________
+#Jetson NX
+
 To start the demo run, get the necessary libraries (aria, ariacuda,rosaria, slicktoolbox), create a catkin workspace, clone this repo in its source, then run the catkin_make (+ source devel/setup.bash), then:
 
  - roslaunch wander_lab pioneer_start.launch
@@ -33,6 +36,24 @@ To run with Pico Zense Camera instead of the lidar. use the following commands:
  (if you don't have the package for the pico zense, then clone it from: https://github.com/molnarszilard/pico_zense_camera)
  (if you are running it on jetson, inside the pico_zense_camera/src/pico_zense_camera/lib/ overwrite the files with the files from the zip there)
  (The program should work with the ADI Smart Cameras as well, although, not implemented explicitely, needs some adjusments here and there.)
+
+___________
+#Jetson Nano
+
+-get the pico_zense_camera repo from https://github.com/molnarszilard/pico_zense_camera
+
+inside its ws, source it, then run:
+
+```roslaunch pico_zense_camera pz_camera.launch```
+
+another terminal, same ws (without sourcing):
+
+```roslaunch src/pico_zense_camera/launch/depth_laser_scan.launch```
+
+another terminal:
+
+```python wander_lab/src/wander_jetson.py```
+
 _______
 Additional information:
 
