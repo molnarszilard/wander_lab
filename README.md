@@ -17,7 +17,7 @@ __________
 
 The addition of the repo is that you can try out the code in real life using a Pioneer 3-AT robot with a LiDAR LMS200 on top of it.
 
-# Jetson NX
+# Jetson NX on P3 with SickLMS (or PicoZense)
 
 To start the demo run, get the necessary libraries (aria, ariacuda,rosaria, slicktoolbox), create a catkin workspace, clone this repo in its source, then run the catkin_make (+ source devel/setup.bash), then:
 
@@ -49,7 +49,17 @@ To run with Pico Zense Camera instead of the lidar. use the following commands:
 
 ___________
 
-# Jetson Nano
+_______
+#### Asus Xtion Camera + NX
+To run with the Asus Xtion Camera you first need to clone the [openni2_camera](https://github.com/ros-drivers/openni2_camera) repo inside the `src` of the ros ws. After this is done, run:
+
+- ```roslaunch wander_lab pioneer_start_asus.launch```
+
+- ```rosrun teleop_twist_keyboard teleop_twist_keyboard.py /cmd_vel:=/RosAria/cmd_vel```
+
+- ```rosrun wander_lab p3_wander_pico```
+
+# Jetson Nano + Pico
 
 -get the pico_zense_camera repo from https://github.com/molnarszilard/pico_zense_camera
 
