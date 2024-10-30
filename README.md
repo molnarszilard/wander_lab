@@ -67,8 +67,20 @@ another terminal, from home dir (or where jetson dir is):
 
 Notes: Camera is very unstable with Jetson Nano. Try different cables. THe camera should be powered externally (wall plug or another power bank). In my experience, It's better to run the Jetson Nano in 5W mode, but you can try with MAXW mode as well (if you have time for that sort of thing). The powerbank of the motor (sometimes of the camera) goes to sleep after a while (1-2 minutes), push the button on the powerbank to recover.
 
+
+# Jetson Nano + Sphero
+
+```sudo chmod 777 /dev/ttyTHS*```
+
+```sudo chmod 777 /dev/ttyUSB*```
+
+or
+
+```ths``` if the alias is set
+
+``` roslaunch wander_lab sphero.launch```
 _______
-Additional information:
+# Setup and Additional information:
 
 _______
 Hardware setup for Jetson NX (make sure that you can reach the NX from through a wifi, before installing it to the robot configure it to connect automatically to your mobile hotspot):
@@ -128,5 +140,20 @@ https://github.com/MaoRodriguesJ/ROS-P3DX/blob/master/ros.pdf
 
 (https://github.com/ros-drivers/sicktoolbox_wrapper)
 
+## Sphero
 
+RVR Sphero 
 
+Follow  https://github.com/markusk/rvr 
+
+and change 'sphero-sdk-raspberrypi-python' to https://github.com/DomsaVictor/jetson_sphero  
+
+ 
+
+git clone https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver.git  
+
+ 
+
+Change ‘/dev/ttyS0’ to  ‘/dev/ttyTHS1’ in file: /home/jetson/develop/rvr/ROS/catkin_workspace/src/rvr/lib/sphero_sdk/asyncio/client/dal/serial_async_dal.py  
+
+Other information in the Trash detection notes in C24 Teams

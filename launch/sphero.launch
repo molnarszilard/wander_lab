@@ -1,0 +1,35 @@
+<launch>
+    <param name="rvr/hostname" type="String" value="jetson-desktop" />
+    <!--Setting the diffent speeds for the robot.-->
+    <param name="rvr/drivingSpeed" type="int" value="75" />
+    <param name="rvr/turnSpeed"    type="int" value="90" />
+    <!--For the Adafruit motor hat the motor speed is 0-255.
+        s.a. https://learn.adafruit.com/adafruit-motor-shield-v2-for-arduino/library-reference-->
+    <param name="rvr/minMotorSpeed" type="int" value="0"   />
+    <param name="rvr/maxMotorSpeed" type="int" value="255" />
+    <arg name="set_frame_id" default="base_scan"/>
+    <arg name="lds_model" default="$(env LDS_MODEL)" doc="LDS MODEL [LDS-01, LDS-02]"/>
+
+    <!-- Controlling the motor on a hardware level -->
+    <node name="motor_server" pkg="rvr" type="motor_server.py" output="screen"/>
+    <!-- Base controller listens to "cmd_vel" geometry_msgs/Twist messages and publishes motor control messages (for the motor_server node). -->
+    <node name="base_controller" pkg="rvr" type="base_controller.py" output="screen"/>
+
+    <node pkg="hls_lfcd_lds_driver" type="hlds_laser_publisher" name="turtlebot3_lds" output="screen">
+      <param name="port" value="/dev/ttyUSB0"/>
+      <param name="frame_id" value="$(arg set_frame_id)"/>
+    </node>
+
+    <arg name="geotiff_map_file_path" default="$(find hector_geotiff)/maps"/>
+
+    <param name="/use_sim_time" value="false"/>
+
+    <include file="$(find hector_mapping)/launch/mapping_default.launch"/>
+
+    <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch">
+        <arg name="trajectory_source_frame_name" value="scanmatcher_frame"/>
+        <arg name="map_file_path" value="$(arg geotiff_map_file_path)"/>
+    </include>
+    <node name="sphero" pkg="wander_lab" type="sphero"/>
+
+</launch> 
