@@ -158,10 +158,34 @@ Follow  https://github.com/markusk/rvr
 
 and change 'sphero-sdk-raspberrypi-python' to https://github.com/DomsaVictor/jetson_sphero  
 
- 
 
+ ### Install the Lidar with either (for safeKeeping, the lidar files are in this repository also, this is the version saved from jetson trash detector, you can install it with other methods):
+
+ ```bash
+sudo apt install ros-${ROS_DISTRO}-hls-lfcd-lds-driver
+```
+
+OR into `cd catkin_ws/src`:
+
+```bash
 git clone https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver.git  
+```
 
+Run separately:
+```bash
+roslaunch hls_lfcd_lds_driver hlds_laser.launch
+```
+
+You might also want to run (if `catkin_make` fails):
+
+```bash
+git checkout noetic
+```
+If error: `An exception was thrown: read: End of file`: then following (issue)[https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver/issues/41], then (StackOverflow)[https://stackoverflow.com/questions/45896414/boost-asio-serial-port-end-of-file] run before launching the lidar:
+
+```bash
+stty -F /dev/ttyUSB0 raw
+```
  
 
 Change ‘/dev/ttyS0’ to  ‘/dev/ttyTHS1’ in file: /home/jetson/develop/rvr/ROS/catkin_workspace/src/rvr/lib/sphero_sdk/asyncio/client/dal/serial_async_dal.py  
