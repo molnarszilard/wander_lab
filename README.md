@@ -220,3 +220,18 @@ stty -F /dev/ttyUSB0 raw
 Change ‘/dev/ttyS0’ to  ‘/dev/ttyTHS1’ in file: /home/jetson/develop/rvr/ROS/catkin_workspace/src/rvr/lib/sphero_sdk/asyncio/client/dal/serial_async_dal.py  
 
 Other information in the Trash detection notes in C24 Teams
+
+Jetson environment setup, add the following lines to the `~/.bashrc` file:
+>[Note] - not all of the lines are important, but no idea which is it and which not
+```
+export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+source /opt/ros/melodic/setup.bash
+source /home/jetson/catkin_ws/devel/setup.bash
+export OPENBLAS_CORETYPE=ARMV8
+source /home/jetson/catkin_ws/devel/setup.bash
+export LDS_MODEL=LDS-01
+alias T1='roslaunch wander_lab robot_control.launch'
+alias T2='roslaunch darknet_ros yolo_v3-tiny-trash.launch'
+alias T3='rosrun wander_lab robot_control'
+```
