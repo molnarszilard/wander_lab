@@ -203,18 +203,22 @@ mkdir -p ~/develop
 cd ~/develop
 git clone https://github.com/markusk/rvr.git
 git clone https://github.com/DomsaVictor/jetson_sphero.git
-ln -s ~/develop/sphero-sdk-raspberrypi-python/sphero_sdk/ ~/develop/rvr/ROS/catkin_workspace/src/rvr/lib/
+
+cd ~/develop/jetson_sphero/sphero-sdk-nano-python/
+sudo python3 setup.py install
+
+ln -s ~/develop/jetson_sphero/sphero-sdk-nano-python/sphero_sdk/ ~/develop/rvr/ROS/catkin_workspace/src/rvr/lib/
 
 ln -s ~/develop/rvr/ROS/catkin_workspace/src/rvr ~/catkin_ws/src/
 
 cd ~/catkin_ws
 ## maybe you also need
 rm -rf devel/ build/
+cd src
+git clone https://github.com/molnarszilard/wander_lab.git
+cd ..
 catkin_make
 
-## Maybe
-cd develop/jetson_sphero/sphero-sdk-nano-python/
-sudo python3 setup.py install
 sudo chmod -R 777 /usr/local/lib/python3.6/dist-packages/sphero_sdk-1.0.0-py3.6.egg/
 ```
 
@@ -268,7 +272,6 @@ If error: `An exception was thrown: read: End of file`: then following (issue)[h
 stty -F /dev/ttyUSB0 raw
 ```
  
-
 Change ‘/dev/ttyS0’ to  ‘/dev/ttyTHS1’ in file: /home/jetson/develop/rvr/ROS/catkin_workspace/src/rvr/lib/sphero_sdk/asyncio/client/dal/serial_async_dal.py  
 
 Other information in the Trash detection notes in C24 Teams
