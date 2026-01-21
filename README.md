@@ -181,6 +181,21 @@ https://github.com/MaoRodriguesJ/ROS-P3DX/blob/master/ros.pdf
 
 ## Sphero
 
+```bash
+export ROS_DISTRO=melodic
+sudo apt install ros-${ROS_DISTRO}-hls-lfcd-lds-driver
+sudo apt install ros-${ROS_DISTRO}-hector-slam
+
+
+mkdir -p ~/develop
+cd ~/develop
+git clone https://github.com/markusk/rvr.git
+git clone https://github.com/DomsaVictor/jetson_sphero.git
+
+cd ~/catkin_ws/src
+ln -s ~/develop/rvr/ROS/catkin_workspace/src/rvr ~/catkin_ws/src/
+```
+
 RVR Sphero 
 
 Follow  https://github.com/markusk/rvr 
@@ -230,6 +245,7 @@ source /opt/ros/melodic/setup.bash
 source /home/jetson/catkin_ws/devel/setup.bash
 export OPENBLAS_CORETYPE=ARMV8
 export LDS_MODEL=LDS-01
+export ROS_DISTRO=melodic
 ```
 
 >[Warning!] - This repo might contain more 
