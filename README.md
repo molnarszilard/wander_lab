@@ -179,7 +179,9 @@ https://github.com/MaoRodriguesJ/ROS-P3DX/blob/master/ros.pdf
 
 (https://github.com/ros-drivers/sicktoolbox_wrapper)
 
-## Sphero
+# Sphero
+
+_Note: in the folder `other_catkin_packages` there are a few zipped packages, that you can try out. They are the packages installed below, with possible minor modifications._
 
 We are using RVR Sphero 
 
