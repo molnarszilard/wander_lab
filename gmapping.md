@@ -3,6 +3,8 @@
 This is a short  description for runnging gmapping/slam/amcl for pioneer 3-at robot, with jetson etc. This is just an overview, you might need to learn more things from elsewhere, but by default it should be possible to slightly modify the code for a different robot setup.
 TODO: check the community implementations for ROS2.
 
+Alternative version is (hector_slam)[https://wiki.ros.org/hector_slam].
+
 ## Install
 
 https://github.com/ros-perception/slam_gmapping 

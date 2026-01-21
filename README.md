@@ -229,9 +229,11 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PAT
 source /opt/ros/melodic/setup.bash
 source /home/jetson/catkin_ws/devel/setup.bash
 export OPENBLAS_CORETYPE=ARMV8
-source /home/jetson/catkin_ws/devel/setup.bash
 export LDS_MODEL=LDS-01
-alias T1='roslaunch wander_lab robot_control.launch'
-alias T2='roslaunch darknet_ros yolo_v3-tiny-trash.launch'
-alias T3='rosrun wander_lab robot_control'
 ```
+
+>[Warning!] - This repo might contain more 
+
+### Install slam
+
+You can either use (hector_slam)[https://wiki.ros.org/hector_slam] or gmapping (see gmapping.md file for more info.)
