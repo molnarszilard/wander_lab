@@ -193,7 +193,10 @@ To do the setup:
 export ROS_DISTRO=melodic
 sudo apt install ros-${ROS_DISTRO}-hls-lfcd-lds-driver
 sudo apt install ros-${ROS_DISTRO}-hector-slam
+sudo apt install ros-${ROS_DISTRO}-urg-node ros-${ROS_DISTRO}-teleop-twist-keyboard joystick ros-${ROS_DISTRO}-joystick-drivers ros-${ROS_DISTRO}-teleop-twist-joy
+sudo apt install python-catkin-tools python3-dev python3-numpy  python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
 pip3 install aiohttp pyserial_asyncio
+pip3 install rospkg catkin_pkg
 
 
 mkdir -p ~/develop
@@ -202,8 +205,17 @@ git clone https://github.com/markusk/rvr.git
 git clone https://github.com/DomsaVictor/jetson_sphero.git
 ln -s ~/develop/sphero-sdk-raspberrypi-python/sphero_sdk/ ~/develop/rvr/ROS/catkin_workspace/src/rvr/lib/
 
-cd ~/catkin_ws/src
 ln -s ~/develop/rvr/ROS/catkin_workspace/src/rvr ~/catkin_ws/src/
+
+cd ~/catkin_ws
+## maybe you also need
+rm -rf devel/ build/
+catkin_make
+
+## Maybe
+cd develop/jetson_sphero/sphero-sdk-nano-python/
+sudo python3 setup.py install
+sudo chmod -R 777 /usr/local/lib/python3.6/dist-packages/sphero_sdk-1.0.0-py3.6.egg/
 ```
 
 TO TEST: Turn on the RVR and test the SDK
