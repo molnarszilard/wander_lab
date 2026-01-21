@@ -181,27 +181,50 @@ https://github.com/MaoRodriguesJ/ROS-P3DX/blob/master/ros.pdf
 
 ## Sphero
 
+We are using RVR Sphero 
+
+Follow  https://github.com/markusk/rvr 
+
+To do the setup:
+
 ```bash
 export ROS_DISTRO=melodic
 sudo apt install ros-${ROS_DISTRO}-hls-lfcd-lds-driver
 sudo apt install ros-${ROS_DISTRO}-hector-slam
+pip3 install aiohttp pyserial_asyncio
 
 
 mkdir -p ~/develop
 cd ~/develop
 git clone https://github.com/markusk/rvr.git
 git clone https://github.com/DomsaVictor/jetson_sphero.git
+ln -s ~/develop/sphero-sdk-raspberrypi-python/sphero_sdk/ ~/develop/rvr/ROS/catkin_workspace/src/rvr/lib/
 
 cd ~/catkin_ws/src
 ln -s ~/develop/rvr/ROS/catkin_workspace/src/rvr ~/catkin_ws/src/
 ```
 
-RVR Sphero 
+TO TEST: Turn on the RVR and test the SDK
 
-Follow  https://github.com/markusk/rvr 
+- Start the ROS test program:
 
-and change 'sphero-sdk-raspberrypi-python' to https://github.com/DomsaVictor/jetson_sphero  
+```bash
+cd ~/catkin_ws/src/rvr/nodes
+./test.py
+```
 
+- The output should look something like this:
+
+```bash
+Checking RVR firmware versions...
+Checking CMS firmware versions...
+Firmware check complete.
+Battery percentage:  90 %
+Voltage state:  1
+Voltage states:  [unknown: 0, ok: 1, low: 2, critical: 3]
+```
+
+_Note: The firmware check seems to pop up from time to time._
 
  ### Install the Lidar with either (for safeKeeping, the lidar files are in this repository also, this is the version saved from jetson trash detector, you can install it with other methods):
 
